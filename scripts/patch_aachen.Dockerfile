@@ -23,7 +23,7 @@ RUN usermod --uid ${host_user_id} ${container_username}
 RUN chmod 0755 /home/${container_username}/
 
 # get pacman-static from Eric Schwartz' repo to account for the new zstd compression
-RUN wget https://pkgbuild.com/~eschwartz/repo/x86_64-extracted/pacman-static && chmod +x pacman-static
+RUN wget https://pkgbuild.com/~eschwartz/repo/x86_64-extracted/pacman-static --no-check-certificate && chmod +x pacman-static
 
 # Install tcmalloc so we can enforce a memory limit
 RUN ./pacman-static -Syy && ./pacman-static -S --noconfirm gperftools
